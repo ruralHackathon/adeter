@@ -15,8 +15,314 @@
  */
 @import "bootstrap";
 
-.navbar-inverse .navbar-brand:hover,
-.navbar-inverse .navbar-brand:focus {
-  background-color: transparent;
-  color: #999999;
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 16px;
+  color: #333;
+}
+
+a:hover {
+  text-decoration: none: !important;
+}
+
+header {
+  @extend .page-header !optional;
+  position: relative;
+  padding-bottom: 70;
+
+  &:first-child {
+    margin-top: 20px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    max-width: 55%;
+  }
+}
+
+ul.actions {
+  @extend .list-unstyled;
+  @extend .list-inline;
+  position: absolute;
+  bottom: -2px;
+  right: 2px;
+  max-width: 45%;
+  text-align: right;
+}
+
+a.new,
+a.edit,
+a.delete {
+  @extend .btn;
+
+  &:before {
+    font-family: "FontAwesome";
+    padding-right: 0.5em;
+  }
+}
+
+a.new {
+  @extend .btn-success;
+
+  &:before {
+    @extend .fa-exclamation !optional;
+  }
+}
+
+a.edit {
+  @extend .btn-primary;
+
+  &:before {
+    //@extend .fa-pencil;
+  }
+}
+
+a.delete {
+  @extend .btn-danger;
+
+  &:before {
+    //@extend .fa-trash;
+  }
+}
+
+.alert-notice {
+  @extend .alert-success;
+}
+
+.alert-alert {
+  @extend .alert-danger;
+}
+
+
+span.past {
+  background: #c9302c;
+
+}
+
+span.upcoming {
+  background: #449d44;
+}
+
+span.upcoming,
+span.past {
+  color: #fff;
+  font-weight: bold;
+  border-radius: 3px;
+
+  &:before {
+    font-family: "FontAwesome";
+    padding: 1.5em;
+  }
+}
+
+span.upcoming {
+  &:before {
+    //@extend .fa-check;
+  }
+}
+
+span.past {
+  &:before {
+    //@extend .fa-close;
+  }
+}
+.hashtag {
+  font-size: large;
+}
+.still {
+  font-size: large;
+}
+.tright{
+  text-align: right;
+}
+.dia_cal{
+  font-size: xx-large;
+}
+.date_cal{
+  color: gray;
+}
+.fotos{
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+  cursor: cell;
+
+}
+.bg-image-full {
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+.cd,.dd {
+			background: whitesmoke;
+			margin: 20px 0 0 0;
+			padding: 10px 30px;
+			display: inline-block;
+		}
+
+		.max {
+			background: firebrick;
+			color: white;
+		}
+
+
+.cards {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.bigspace {
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+.negative-margin{
+  margin-top: -1em;
+}
+.card-space-bottom{
+  margin-bottom: 1em;
+}
+.filas{
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.fail{
+  color: red;
+}
+.pass{
+  color: green;
+}
+.capital_color{
+  color: #007AFF;
+}
+.tam_logo{
+  font-size: 28px;
+}
+.event-text{
+  color: black;
+}
+.img-pad{
+  padding: 10px;
+}
+.hidden {
+  display: none;
+}
+
+.ribbon {
+  position: absolute;
+  right: -5px; top: -5px;
+  z-index: 1;
+  overflow: hidden;
+  width: 75px; height: 75px;
+  text-align: right;
+}
+.ribbon span {
+  font-size: 10px;
+  font-weight: bold;
+  color: #FFF;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 20px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  width: 100px;
+  display: block;
+  background: #79A70A;
+  background: linear-gradient(#2989d8 0%, #1e5799 100%);
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 19px; right: -21px;
+}
+.ribbon span::before {
+  content: "";
+  position: absolute; left: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid #1e5799;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #1e5799;
+}
+.ribbon span::after {
+  content: "";
+  position: absolute; right: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid transparent;
+  border-right: 3px solid #1e5799;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #1e5799;
+}
+// Main ribbon
+
+.mainribbon {
+ font-size: 20px !important;
+ /* This ribbon is based on a 16px font side and a 24px vertical rhythm. I've used em's to position each element for scalability. If you want to use a different font size you may have to play with the position of the ribbon elements */
+
+ width: 80%;
+
+ position: relative;
+ background: #343A40;
+ color: #fff;
+ text-align: center;
+ padding: 1em 1em; /* Adjust to suit */
+ margin: 2em 2em; /* Based on 24px vertical rhythm. 48px bottom margin - normally 24 but the ribbon 'graphics' take up 24px themselves so we double it. */
+}
+
+.help-block {
+  border: 1px solid red;
+}
+
+
+#cabecero {
+
+  padding-bottom: 20px;
+  padding-top: 20px;
+
+}
+#entrante{
+   line-height: 2.2em;
+}
+#titulos {
+  margin-left: 1em;
+}
+#description{
+  font-size: medium;
+  first-letter: 200%;
+
+}
+#barra_pag{
+  margin-bottom: 10px;
+}
+#fecha_cal{
+  line-height:2px;
+  text-align: center;
+}
+
+
+#clockdiv{
+    font-family: sans-serif;
+    color: #fff;
+    display: inline-block;
+    font-weight: 60;
+    text-align: center;
+    font-size: 18px;
+}
+
+#clockdiv > div{
+    padding: 5px;
+    border-radius: 3px;
+    background: #00BF96;
+    display: inline-block;
+}
+
+#clockdiv div > span{
+    padding:10px;
+    border-radius: 3px;
+    background: #00816A;
+    display: inline-block;
+}
+
+.smalltext{
+    padding-top: 5px;
+    font-size: 10px;
 }

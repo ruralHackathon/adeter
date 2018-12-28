@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_28_173508) do
+ActiveRecord::Schema.define(version: 2018_12_28_191302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,12 +36,32 @@ ActiveRecord::Schema.define(version: 2018_12_28_173508) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "empresas", force: :cascade do |t|
+    t.string "nombre"
+    t.text "historia"
+    t.string "resumen"
+    t.string "direccion"
+    t.string "web"
+    t.string "telefono"
+    t.string "email"
+    t.string "video"
+    t.string "horario"
+    t.float "lon"
+    t.float "lat"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_empresas_on_user_id"
+  end
+
   create_table "promos", force: :cascade do |t|
     t.string "titulo"
     t.text "texto"
     t.datetime "validez"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "empresa_id"
+    t.index ["empresa_id"], name: "index_promos_on_empresa_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -57,4 +77,6 @@ ActiveRecord::Schema.define(version: 2018_12_28_173508) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "empresas", "users"
+  add_foreign_key "promos", "empresas"
 end

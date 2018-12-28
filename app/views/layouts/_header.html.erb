@@ -1,30 +1,115 @@
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
+    <div id="barra_pag">
 
-            <%= image_tag "logotipo.png", class: "img-fluid", alt: "Allburquerque" %>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <strong>
+          <span class="tam_logo">
+          <span> <%= image_tag "logotipo.png", size: "250x60" %> </span>
+          </span>
+        </strong>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Empresas
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Turismos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Eventos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Ofertas</a>
-            </li>
-          </ul>
-        </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Empresas</a>
+          </li>
+
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Turismo
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Historia y cultura</a>
+              <a class="dropdown-item" href="#">Turismo activo</a>
+              <a class="dropdown-item" href="#">¿Qué ver?</a>
+              <a class="dropdown-item" href="#">Alojamiento</a>
+              <a class="dropdown-item" href="#">Gastronomía</a>
+              <a class="dropdown-item" href="#">Naturaleza</a>
+              <a class="dropdown-item" href="#">Ocio</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/mapas">Mapa del tesoro</a>
+            </div>
+          </li>
+
+          <li class="nav-item ">
+            <a class="nav-link" href="#">Eventos</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Promociones
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/ofertas-y-promociones">Últimas ofertas</a>
+              <a class="dropdown-item" href="/mercadillo-digital">Mercadillo digital</a>
+            </div>
+          </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <!-- Usuarios normales -->
+          <% if user_signed_in? %>
+            <% if current_user.user?%>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span><%= image_tag avatar_url(current_user), width:30, class:"img-circle" %> </span> Mi perfil
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="<%= edit_user_registration_path %>">Editar usuario</a>
+                  <a class="dropdown-item" href="/empresas/<%= current_user.empresa.id %>/edit/">Editar Empresa</a>
+                  <a class="dropdown-item" href="<%= mispromos_path %>">Mis promociones</a>
+                  <a class="dropdown-item" href="<%= new_incident_path %>">¿Problemas?</a>
+
+                  <div class="dropdown-divider"></div>
+                  <%= link_to "Salir", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                </div>
+              </li>
+
+            <% end %>
+          <% end %>
+
+          <!-- Admins-->
+
+          <% if user_signed_in? %>
+            <% if current_user.admin?%>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span><%= image_tag avatar_url(current_user), width:30, class:"img-circle" %> </span> Mi perfil
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/users/edit/">Editar usuario</a>
+                  <a class="dropdown-item" href="/admin">Administrar</a>
+
+                  <div class="dropdown-divider"></div>
+                  <%= link_to "Salir", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                </div>
+              </li>
+
+            <% end %>
+          <% end %>
+
+
+        </ul>
+        <%#= form_tag empresas_path, class: "form-inline my-2 my-lg-0", method: :get do %>
+          <div class="form-group">
+            <%= text_field_tag :query, params[:query], placeholder: "Ej. Peluquero hombre", autofocus: true, class: "form-control mr-sm-2" %>
+          </div>
+          <%#= submit_tag "Buscar", class: "btn n btn-outline-light my-2 my-sm-0" %>
+        <%# end %>
+
+
       </div>
     </nav>
+
+    </div>
