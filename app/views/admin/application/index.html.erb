@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-sm-3 admin">
+    <div class="admin-sidebar">
+      <div class="user-panel">
+        <div class="pull-left image">
+          <span><%= image_tag avatar_url(current_user), width:30, class: "img-circle" %></span>
+        </div>
+        <div class="pull-left info"><p>
+          <%= current_user.email %>
+        </p>
+
+        </div>
+      </div>
+
+    </div>
+    <ul class="admin-menu">
+      <li class="text-uppercase text-center header">Main Navigation</li>
+      <li>
+        <%#= link_to admin_users_path do %>
+          <%= fa_icon "users" %>
+          <span class="badge badge-secondary">Usuarios</span>
+          <span class="badge badge-primary float-right"><%= @users %></span>
+        <%# end %>
+      </li>
+      <li>
+        <%#= link_to admin_empresas_path do %>
+          <%= fa_icon "building" %>
+          <span class="badge badge-secondary">Empresas</span>
+          <span class="badge badge-primary float-right"><%= @empresas %></span>
+        <%# end %>
+      </li>
+
+      <li>
+        <%#= link_to admin_promos_path do %>
+          <%= fa_icon "bullhorn" %>
+          <span class="badge badge-secondary">Promociones</span>
+          <span class="badge badge-primary float-right"><%= @promos %></span>
+        <%# end %>
+      </li>
+
+      <li>
+        <%#= link_to admin_eventos_path do %>
+          <%= fa_icon "globe" %>
+          <span class="badge badge-secondary">Eventos</span>
+          <span class="badge badge-primary float-right"><%= @eventos %></span>
+
+        <%# end %>
+      </li>
+<p>
+    </ul>
+  </div>
+  <div class="col-sm-9">
+    <header>
+      <h1 class="text-center">Administración</h1>
+      <h4 class="text-center">Panel de control</h4>
+    </header>
+  </div>
+</div>

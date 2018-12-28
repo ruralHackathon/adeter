@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    root 'application#index'
+    get 'application/index'
+  end
   root 'info#index'
   get 'info/index'
   get 'info/mercadillo'
