@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'promos#index'
+  root 'info#index'
   get 'info/index'
   get 'info/mercadillo'
   get 'info/historia'
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :eventos
   resources :empresas
   resources :promos
-  
+
   devise_for :users
 
 end
