@@ -13,12 +13,12 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mx-auto">
           <li class="nav-item active">
             <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Empresas</a>
+            <%= link_to "Empresas", empresas_path, class: "nav-link" %>
           </li>
 
 
@@ -41,7 +41,7 @@
           </li>
 
           <li class="nav-item ">
-            <a class="nav-link" href="#">Eventos</a>
+            <%= link_to "Eventos", eventos_path, class:"nav-link" %>
           </li>
 
           <li class="nav-item dropdown">
@@ -49,7 +49,7 @@
               Promociones
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/ofertas-y-promociones">Últimas ofertas</a>
+              <%= link_to "Últimas Ofertas", promos_path, class: "dropdown-item" %>
               <a class="dropdown-item" href="/mercadillo-digital">Mercadillo digital</a>
             </div>
           </li>
@@ -101,15 +101,16 @@
 
 
         </ul>
-        <%#= form_tag empresas_path, class: "form-inline my-2 my-lg-0", method: :get do %>
+        <%= form_tag empresas_path, class: "form-inline my-2 my-lg-0 align-middle", method: :get do %>
           <div class="form-group">
-            <%= text_field_tag :query, params[:query], placeholder: "Ej. Peluquero hombre", autofocus: true, class: "form-control mr-sm-2" %>
+            <%= text_field_tag :query, params[:query], placeholder: "Ej. Comida a domicilio", autofocus: true, class: "form-control mr-sm-2" %>
           </div>
-          <%#= submit_tag "Buscar", class: "btn n btn-outline-light my-2 my-sm-0" %>
-        <%# end %>
+          <%= submit_tag "Buscar", class: "btn n btn-outline-light my-2 my-sm-0" %>
+        <% end %>
 
 
       </div>
+
     </nav>
 
     </div>

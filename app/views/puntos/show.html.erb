@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @punto.titulo %>
+</p>
+
+<p>
+  <strong>Subtitulo:</strong>
+  <%= @punto.subtitulo %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @punto.descripcion %>
+</p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @punto.lat %>
+</p>
+
+<p>
+  <strong>Lon:</strong>
+  <%= @punto.lon %>
+</p>
+
+<p>
+  <strong>Horario:</strong>
+  <%= @punto.horario %>
+</p>
+
+<p>
+  <strong>Precio:</strong>
+  <%= @punto.precio %>
+</p>
+
+<p>
+  <strong>Info:</strong>
+  <%= @punto.info %>
+</p>
+
+<p>
+  <strong>Video:</strong>
+  <%= @punto.video %>
+</p>
+
+<%= link_to 'Edit', edit_punto_path(@punto) %> |
+<%= link_to 'Back', puntos_path %>

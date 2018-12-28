@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_28_191302) do
+ActiveRecord::Schema.define(version: 2018_12_28_202006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,14 @@ ActiveRecord::Schema.define(version: 2018_12_28_191302) do
     t.index ["user_id"], name: "index_empresas_on_user_id"
   end
 
+  create_table "eventos", force: :cascade do |t|
+    t.string "titulo"
+    t.text "info"
+    t.datetime "fecha"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "promos", force: :cascade do |t|
     t.string "titulo"
     t.text "texto"
@@ -62,6 +70,20 @@ ActiveRecord::Schema.define(version: 2018_12_28_191302) do
     t.datetime "updated_at", null: false
     t.bigint "empresa_id"
     t.index ["empresa_id"], name: "index_promos_on_empresa_id"
+  end
+
+  create_table "puntos", force: :cascade do |t|
+    t.string "titulo"
+    t.string "subtitulo"
+    t.text "descripcion"
+    t.float "lat"
+    t.float "lon"
+    t.string "horario"
+    t.float "precio"
+    t.text "info"
+    t.string "video"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

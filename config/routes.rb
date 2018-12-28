@@ -1,8 +1,22 @@
 Rails.application.routes.draw do
 
-  resources :empresas
   root 'promos#index'
-  devise_for :users
+  get 'info/index'
+  get 'info/mercadillo'
+  get 'info/historia'
+  get 'info/turismoactivo'
+  get 'info/turismo'
+  get 'info/alojamiento'
+  get 'info/gastronomia'
+  get 'info/naturaleza'
+  get 'info/ocio'
+  get 'info/mapa'
+
+  resources :puntos
+  resources :eventos
+  resources :empresas
   resources :promos
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
+  devise_for :users
+
 end
