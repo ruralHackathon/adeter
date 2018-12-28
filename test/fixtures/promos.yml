@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  titulo: MyString
+  texto: MyText
+  validez: 2018-12-28 17:03:40
+
+two:
+  titulo: MyString
+  texto: MyText
+  validez: 2018-12-28 17:03:40

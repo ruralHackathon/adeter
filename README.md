@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Aplicación desarrollada para el "ruralhackathon" de  Alburquerque.
 
-Things you may want to cover:
+__________________________________________
+Espacio reservador para la descripción de la aplicación cuando deje de ser un "secreto"
+__________________________________________
 
-* Ruby version
+Herramientas y tecnologías usadas:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Ruby 2.4
+Ruby on Rails 5.1
+Bootstrap 4
+Jquery 3
+Amazon S3
+Heroku
+PostgreSQL 9.6

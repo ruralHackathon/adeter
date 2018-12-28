@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @promo.titulo %>
+</p>
+
+<p>
+  <strong>Texto:</strong>
+  <%= @promo.texto %>
+</p>
+
+<p>
+  <strong>Validez:</strong>
+  <%= @promo.validez %>
+</p>
+
+<%= link_to 'Edit', edit_promo_path(@promo) %> |
+<%= link_to 'Back', promos_path %>
