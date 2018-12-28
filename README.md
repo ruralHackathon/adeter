@@ -3,7 +3,7 @@
 Aplicación desarrollada para el "ruralhackathon" de  Alburquerque.
 
 __________________________________________
-Espacio reservador para la descripción de la aplicación cuando deje de ser un "secreto"
+Espacio reservado para la descripción de la aplicación cuando deje de ser un "secreto"
 __________________________________________
 
 Herramientas y tecnologías usadas:
@@ -15,3 +15,5 @@ Jquery 3
 Amazon S3
 Heroku
 PostgreSQL 9.6
+
+Puedes ver lo que vamos avanzando en <a href="https://alburquerque.herokuapp.com">https://alburquerque.herokuapp.com</a>
