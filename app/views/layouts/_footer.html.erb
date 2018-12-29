@@ -24,7 +24,7 @@
         <li>  <%= link_to "Publicítate", "#", class:"text-muted" %> </li>
         <li><a class="text-muted" href="#">Novedades</a></li>
         <% unless user_signed_in? %>
-        <li>  <%= link_to "Área Privada", new_user_sssion_path, class:"text-muted", rel: "nofollow" %> </li>
+        <li>  <%= link_to "Área Privada", new_user_session_path, class:"text-muted", rel: "nofollow" %> </li>
         <% end %>
       </ul>
     </div>

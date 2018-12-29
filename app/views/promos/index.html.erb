@@ -6,8 +6,14 @@
   <div class="alert alert-info">
     <strong>OFERTAS FLASH</strong>
   </div>
+
+
   <% if @promos.any?  %>
-    <%= render @promos %>
+    <div class="card-columns">
+      <div class="card">
+        <%= render @promos %>
+      </div>
+    </div>
   <% else %>
     <div class="alert alert-secondary">
       No hay promociones recientes

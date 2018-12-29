@@ -44,3 +44,15 @@ Morbi in feugiat lacus. Sed condimentum hendrerit sapien, non facilisis sapien s
       plan: "plus",
       user_id: 2
 )
+
+Punto.create (
+  titulo: "",
+  subtitulo: "",
+  descripcion: "",
+  lon: 0,
+  lat: 0,
+  horario: "",
+  precio: 0,
+  info: "",
+  video: ""
+)
