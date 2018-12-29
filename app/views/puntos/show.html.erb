@@ -1,53 +1,60 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Titulo:</strong>
-  <%= @punto.titulo %>
+  <h1><%= @punto.titulo %></h1>
+
 </p>
 
 <p>
-  <strong>Subtitulo:</strong>
-  <%= @punto.subtitulo %>
+  <h3><%= @punto.subtitulo %></h3>
+
 </p>
 
 <p>
-  <strong>Descripcion:</strong>
-  <%= @punto.descripcion %>
+  <div class="row">
+    <div class="col-md-8">
+      <%= @punto.descripcion %>
+    </div>
+    <div class="col-md-4">
+      <div id="map" data-turbolinks="false">
+        <iframe
+          width="100%"
+          height="250"
+          frameborder="0" style="border:0"
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDKVHaq85J1cJcT1nZjehdz85Ha3iIs5IY
+            &q=<%=@punto.lat unless @punto.lat.blank?%>,<%=@punto.lon unless @punto.lon.blank?%>&zoom=16&language=es" allowfullscreen>
+        </iframe>
+
+      </div>
+    </div>
+
+  </div>
+
 </p>
 
-<p>
-  <strong>Lat:</strong>
-  <%= @punto.lat %>
-</p>
-
-<p>
-  <strong>Lon:</strong>
-  <%= @punto.lon %>
-</p>
 
 <p>
   <strong>Horario:</strong>
   <%= @punto.horario %>
 </p>
 
-<p>
-  <strong>Precio:</strong>
-  <%= @punto.precio %>
-</p>
 
-<p>
-  <strong>Info:</strong>
-  <%= @punto.info %>
-</p>
-
-<p>
-  <strong>Video:</strong>
-  <%= @punto.video %>
-</p>
 <p>
   <% if @punto.image.attached? %>
   <% end %>
-  <%= image_tag @punto.image %>
+  <%= image_tag @punto.image, class: "img-fluid mx-auto d-block" %>
+</p>
+
+<p>
+  <% if @punto.video? %>
+    <p><h2 class="text-center"><b>Y porque a veces una imagen no es suficiente</b></h2></p>
+
+    <p class="text-center">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe width="560" height="315" src="<%= @empresa.video %>" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </p>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_admin_punto_path(@punto) %> |

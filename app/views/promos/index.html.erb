@@ -10,9 +10,24 @@
 
   <% if @promos.any?  %>
     <div class="card-columns">
+
+      <% @promos.each do |promo| %>
       <div class="card">
-        <%= render @promos %>
+        <%= link_to promo_path(promo) do %>
+          <div class="alert alert-success">
+            <h6 class="alert-link">  <%= promo.titulo %>  </h6>
+            <small class="text-right text-muted"><%= promo.empresa.nombre if (promo.empresa) %></small>
+            <small><%= Nokogiri::HTML(promo.texto).text.truncate(100, separator: ' ') %> </small>
+            <p><h6> <strong> <%= time_format(promo.validez) %> </strong></h6></p>
+
+            <%if promo.image.attached?%>
+              <%= image_tag promo.image, class: "img-fluid img-thumbnail fotos"%>
+            <% end %>
+          </div>
+        <% end %>
       </div>
+      <% end %>
+
     </div>
   <% else %>
     <div class="alert alert-secondary">

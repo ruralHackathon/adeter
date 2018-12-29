@@ -10,3 +10,37 @@
   </div>
 </div>
 <% end %>
+
+
+<% if @empresas.count > 0 %>
+
+  <%= link_to empresa_path(@empresas[0]) do %>
+  <div class="card" >
+    <% if @empresas[0].try(:logo).attached? %>
+      <%= image_tag(@empresas[0].logo, class: "card-img-top img-fluid img-pad", alt: "Card image cap") %>
+    <% end %>
+    <div class="card-body">
+      <h5 class="card-title"><%= @empresas[0].nombre if @empresas[0].try(:present?) %></h5>
+      <p class="card-text event-text"><%= @empresas[0].resumen if @empresas[0].resumen %></p>
+      <p class="text-center"><small class="text-muted"> - Promocionado - </small></p>
+    </div>
+  </div>
+  <% end %>
+
+<% end %>
+
+<% if @empresas.count > 1 %>
+
+  <%= link_to empresa_path(@empresas[1]) do %>
+  <div class="card cards">
+    <% if @empresas[1].try(:logo).attached? %>
+      <%= image_tag(@empresas[1].logo, class: "card-img-top img-fluid img-pad", alt: "Card image cap") %>
+    <% end %>
+    <div class="card-body">
+      <h5 class="card-title"><%= @empresas[1].nombre if @empresas[1].present? %></h5>
+      <p class="card-text event-text"><%= @empresas[1].resumen if @empresas[1].resumen %></p>
+      <p class="text-center"><small class="text-muted"> - Promocionado - </small></p>
+    </div>
+  </div>
+  <% end %>
+<% end %>

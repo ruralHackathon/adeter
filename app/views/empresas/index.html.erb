@@ -1,49 +1,24 @@
-<p id="notice"><%= notice %></p>
 
 <h1>Empresas</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Historia</th>
-      <th>Resumen</th>
-      <th>Direccion</th>
-      <th>Web</th>
-      <th>Telefono</th>
-      <th>Email</th>
-      <th>Video</th>
-      <th>Horario</th>
-      <th>Lon</th>
-      <th>Lat</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="card-columns">
 
-  <tbody>
-    <% @empresas.each do |empresa| %>
-      <tr>
-        <td><%= empresa.nombre %></td>
-        <td><%= empresa.historia %></td>
-        <td><%= empresa.resumen %></td>
-        <td><%= empresa.direccion %></td>
-        <td><%= empresa.web %></td>
-        <td><%= empresa.telefono %></td>
-        <td><%= empresa.email %></td>
-        <td><%= empresa.video %></td>
-        <td><%= empresa.horario %></td>
-        <td><%= empresa.lon %></td>
-        <td><%= empresa.lat %></td>
-        <td><%= empresa.user_id %></td>
-        <td><%= link_to 'Show', empresa %></td>
-        <td><%= link_to 'Edit', edit_empresa_path(empresa) %></td>
-        <td><%= link_to 'Destroy', empresa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+   <% @empresas.each do |empresa| %>
 
-<br>
+     <%= link_to empresa_path(empresa) do %>
 
-<%= link_to 'New Empresa', new_empresa_path %>
+         <div class="card cards">
+            <% if empresa.logo.attached? %>
+              <%= image_tag empresa.logo, class: "card-img-top img-fluid img-pad" %>
+            <% end %>
+           <div class="card-body">
+             <h5 class="card-title"><%= link_to empresa.nombre, empresa_path(empresa) if empresa.nombre? %></h5>
+             <p class="card-text"><%= empresa.resumen if empresa.resumen? %></p>
+           </div>
+         </div>
+
+       <% end %>
+
+   <% end %>
+
+</div>

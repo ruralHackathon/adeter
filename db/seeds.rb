@@ -1,10 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
 
 User.create!(
     email: "juanseb@gmail.com",
@@ -15,6 +9,13 @@ User.create!(
 
 User.create!(
     email: "juanseb2@gmail.com",
+    password: "123456",
+    password_confirmation: "123456",
+    role: :user
+)
+
+User.create!(
+    email: "juanseb3@gmail.com",
     password: "123456",
     password_confirmation: "123456",
     role: :user
@@ -45,14 +46,54 @@ Morbi in feugiat lacus. Sed condimentum hendrerit sapien, non facilisis sapien s
       user_id: 2
 )
 
-Punto.create (
-  titulo: "Iglesia de San Mateo",
-  subtitulo: "",
-  descripcion: "",
-  lon: 39.218215,
-  lat: -6.999927,
-  horario: "",
-  precio: 0,
-  info: "",
-  video: "https://youtu.be/embed/DhHQTgtbigk"
+Empresa.create!(
+      nombre: "ADETER",
+      historia: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum venenatis eget lacus a tincidunt. Sed eget ex risus. Quisque ante risus, malesuada in mollis sit amet, finibus fringilla tortor. Etiam semper libero non lectus maximus scelerisque. Phasellus lobortis, massa eu fringilla viverra, justo tellus tincidunt est, ac facilisis felis elit a erat. Vivamus venenatis interdum est, euismod tempus sapien dapibus eu. Sed turpis quam, tristique in nulla et, maximus consequat nunc. In hac habitasse platea dictumst. Quisque maximus leo id turpis efficitur imperdiet. Mauris posuere sit amet odio vitae dignissim. Donec consequat risus nibh, ac eleifend ligula malesuada eget. Aliquam tempor leo ut sodales mattis. In pretium vestibulum odio, in lobortis mauris semper eu. Sed ut pulvinar augue. ",
+      web: "http://www.adeter.org",
+      telefono: "692 67 12 50",
+      video: "https://www.youtube.com/embed/jZX-q7I5iTg",
+      horario: "Lunes a viernes de 08.00 - 15.30",
+      lon: 38.2375,
+      lat: -6.0246843,
+      plan: "premium",
+      user_id: 3
 )
+
+Promo.create!(
+  titulo: "2x1 en abrigos",
+  texto: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum venenatis eget lacus a tincidunt. Sed eget ex risus. Quisque ante risus.",
+  validez: Time.now + 1.day,
+  empresa_id: 2
+)
+
+Promo.create!(
+  titulo: "Discos SSD a mitad de precio",
+  texto: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum venenatis eget lacus a tincidunt. Sed eget ex risus. Quisque ante risus.",
+  validez: Time.now + 2.days,
+  empresa_id: 2
+)
+
+Promo.create!(
+  titulo: "Hackathones a partir de 5 €",
+  texto: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum venenatis eget lacus a tincidunt. Sed eget ex risus. Quisque ante risus.",
+  validez: Time.now + 3.day,
+  empresa_id: 1
+)
+
+Punto.create!(
+  
+)
+
+# Punto.create!(
+#
+#
+#   titulo: "Iglesia de San Mateo",
+#   subtitulo: "",
+#   descripcion: "",
+#   lon: 39.218215,
+#   lat: -6.999927,
+#   horario: "",
+#   precio: 0,
+#   info: "",
+#   video: "https://youtu.be/embed/DhHQTgtbigk"
+# )
