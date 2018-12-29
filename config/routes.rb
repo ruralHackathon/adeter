@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get 'info/mapa'
   get '/mispromos', to: 'promos#mispromos'
 
-  resources :puntos, only: :show
+  resources :puntos
   resources :eventos
   resources :empresas
   resources :promos

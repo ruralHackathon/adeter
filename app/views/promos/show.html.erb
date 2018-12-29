@@ -1,25 +1,58 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Titulo:</strong>
-  <%= @promo.titulo %>
-</p>
 
-<p>
-  <strong>Texto:</strong>
-  <%= @promo.texto %>
-</p>
+<p><h2 class="text-center">Enséñale esto al comerciante para obtener tu descuento</h2></p>
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-md-9">
 
-<p>
-  <strong>Validez:</strong>
-  <%= @promo.validez %>
-</p>
+      <% if @promo.empresa.try(:present?) %>
+        <% if @promo.empresa.logo.attached? %>
+          <%= link_to(image_tag(@promo.empresa.logo, class: "img-fluid"), empresa_path(@promo.empresa)) %>
+        <% else %>
+          <%= @promo.empresa.nombre %>
+        <% end %>
+      <% end %>
+      <p><h1><strong><%= @promo.titulo %></strong></h1></p>
+    </div>
 
-<p>
-<%if @promo.image.attached?%>
-  <%= image_tag @promo.image, class: "img-fluid"%>
-<% end %>
-</p>
 
-<%= link_to 'Edit', edit_promo_path(@promo) %> |
-<%= link_to 'Back', promos_path %>
+    <div class="col-md-3">
+      <img src="https://chart.googleapis.com/chart?cht=qr&chl=<%=  %><%= request.fullpath %>&chs=160x160&chld=L|0" class="qr-code img-thumbnail img-responsive mx-auto d-block">
+      <p class="text-center">
+        <% if (Time.now > @promo.validez) %>
+          <span class="badge badge-danger still">
+            <%= time_format(@promo.validez) %>
+          </span>
+        <% else %>
+          <span class="badge badge-success still">
+            <%= time_format(@promo.validez) %>
+          </span><br/>
+          <small>Fin: <%= time_format_mini(@promo.validez) %></small>
+
+        <% end %>
+      </p>
+    </div>
+  </div>
+
+    <p class="lead cards"><%= @promo.texto %></p>
+
+    <hr class="my-4">
+    <div class="row">
+      <div class="col-md-6">
+
+      </div>
+
+
+    </div>
+    <div class="col-12">
+      <% if @promo.image.attached? %>
+      <div class="img-fluid">
+        <%= image_tag @promo.image, class: "img-fluid mx-auto d-block" %>
+      </div>
+      <% end %>
+    </div>
+
+
+</div>
+
+<%= link_to "Volver", promos_path %>

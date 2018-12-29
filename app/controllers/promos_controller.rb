@@ -66,8 +66,7 @@ end
     user ||= current_user
     @promo = user.try(:empresa).try(:promos).build(promo_params)
     set_validez
-    g
-
+    
     plan = current_user.empresa.plan
     #last_promo = current_user.empresa.try(:promos).try(:last).try(:created_at)
     #last_promo_when = helpers.time_format_mini(last_promo) if last_promo.nil? == false

@@ -46,13 +46,13 @@ Morbi in feugiat lacus. Sed condimentum hendrerit sapien, non facilisis sapien s
 )
 
 Punto.create (
-  titulo: "",
+  titulo: "Iglesia de San Mateo",
   subtitulo: "",
   descripcion: "",
-  lon: 0,
-  lat: 0,
+  lon: 39.218215,
+  lat: -6.999927,
   horario: "",
   precio: 0,
   info: "",
-  video: ""
+  video: "https://youtu.be/embed/DhHQTgtbigk"
 )
