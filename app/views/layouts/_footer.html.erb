@@ -1,7 +1,7 @@
 <footer class="pt-4 my-md-5 pt-md-5 border-top">
   <div class="row">
     <div class="col-md-3">
-      
+
         <div class="row justify-content-md-center">
           <div class="col-md-12">
             <div class="rhh">
@@ -23,9 +23,9 @@
 
         <li>  <%= link_to "Publicítate", "publicitate_path", class:"text-muted" %> </li>
         <li><a class="text-muted" href="/novedades">Novedades</a></li>
-        <!-- <%# unless user_signed_in? %>
-        <li>  <%#= link_to "Área Privada", new_user_session_path, class:"text-muted", rel: "nofollow" %> </li>
-        <%# end %> -->
+        <% unless user_signed_in? %>
+        <li>  <%= link_to "Área Privada", new_user_session_path, class:"text-muted", rel: "nofollow" %> </li>
+        <% end %>
       </ul>
     </div>
     <div class="col-md-3">

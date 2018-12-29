@@ -1,6 +1,6 @@
 class EmpresasController < ApplicationController
   before_action :set_empresa, only: [:show, :edit, :update, :destroy]
-  before_action :verify_id!
+  before_action :verify_id!, only: [:edit, :update]
 
   # GET /empresas
   # GET /empresas.json

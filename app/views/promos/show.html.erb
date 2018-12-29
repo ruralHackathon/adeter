@@ -15,5 +15,11 @@
   <%= @promo.validez %>
 </p>
 
+<p>
+<%if @promo.image.attached?%>
+  <%= image_tag @promo.image, class: "img-fluid"%>
+<% end %>
+</p>
+
 <%= link_to 'Edit', edit_promo_path(@promo) %> |
 <%= link_to 'Back', promos_path %>

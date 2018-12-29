@@ -66,7 +66,7 @@ end
     user ||= current_user
     @promo = user.try(:empresa).try(:promos).build(promo_params)
     set_validez
-    byebug
+    g
 
     plan = current_user.empresa.plan
     #last_promo = current_user.empresa.try(:promos).try(:last).try(:created_at)
@@ -88,7 +88,6 @@ end
           last_promo = current_user.empresa.try(:promos).try(:last).try(:created_at)
           plan = current_user.empresa.plan
           #nil??? primera vez??
-          byebug
             if (1==2)
 
             else
