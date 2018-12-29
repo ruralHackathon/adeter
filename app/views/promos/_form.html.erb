@@ -25,12 +25,27 @@
     <%= form.file_field :image %>
   </div>
 
-  <div class="field">
-    <%= form.label :validez %>
-    <%= form.datetime_select :validez %>
+  <div class="form-group">
+        <p>
+      Duración de la promoción:</br>
+              <%= form.radio_button :validezElegida, "baja" %>
+              <%= form.label 'validez_baja', ' 24 horas' %>
+
+              <%= form.radio_button :validezElegida, "media" %>
+              <%= form.label 'validez_media', ' 3 días' %>
+
+              <%= form.radio_button :validezElegida, "alta" %>
+              <%= form.label 'validez_alta', ' 1 semana' %>
+
+        </p>
   </div>
 
+
+
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Publicar", class: "btn btn-primary" %>
   </div>
 <% end %>
+
+
+<!--  -->

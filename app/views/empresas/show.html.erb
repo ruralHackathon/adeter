@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Nombre:</strong>
@@ -59,6 +58,137 @@
   <strong>User:</strong>
   <%= @empresa.user_id %>
 </p>
+
+
+<!--  -->
+
+
+  <div class="row" id="cabecero">
+
+      <div class="col-md-4">
+        <%= image_tag (@empresa.logo), class: "img-fluid" unless !@empresa.logo.attached? %>
+      </div>
+
+      <div class="col-md-8">
+
+          <div class="display-1" id="titulos">
+            <h1><strong><%= @empresa.nombre unless @empresa.nombre.blank?%></strong> </h1>
+          </div>
+
+      </div>
+  </div>
+
+
+
+<div class="row">
+  <div class="col-md-6">
+  <div class="alert alert-dark" role="alert">
+    <h6>Detalles de contacto</h6>
+  </div>
+
+     <p>
+      <%= fa_icon "map-marker-alt", class: "text-primary" %>
+      <span><%= @empresa.direccion unless @empresa.direccion.blank? %></span>
+    </p>
+
+    <p>
+      <%= fa_icon "phone", class: "text-primary" %>
+      <span> <%= @empresa.telefono unless @empresa.telefono.blank? %></span>
+    </p>
+
+    <p>
+      <%= fa_icon "at", class: "text-primary" %>
+      <span> <%= @empresa.email unless @empresa.email.blank? %></span>
+    </p>
+
+    <p>
+      <%= fa_icon "link", class: "text-primary"  %>
+      <span> <%= link_to @empresa.web, "https://#{@empresa.web}", target: "_blank" unless @empresa.web.blank? %></span>
+    </p>
+
+    <p>
+      <%= fa_icon "clock", class: "text-primary"  %>
+      <span><%= @empresa.horario %></span>
+
+    </p>
+
+  <div class="alert alert-dark" role="alert">
+    <h6>Palabras clave</h6>
+  </div>
+
+    <div id="entrante">
+
+    </div>
+  </div>
+<!-- -->
+  <div class="col-md-6">
+    <div id="map" data-turbolinks="false">
+      <iframe
+        width="100%"
+        height="450"
+        frameborder="0" style="border:0"
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDKVHaq85J1cJcT1nZjehdz85Ha3iIs5IY
+          &q=<%=@empresa.mlat unless @empresa.lat.blank?%>,<%=@empresa.lon unless @empresa.lon.blank?%>&zoom=16&language=es" allowfullscreen>
+      </iframe>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+
+  <div class="col-md-9">
+    <p><h2 class="text-center"><b>Conoce un poco más de <%= @empresa.nombre %>, nuestra empresa</b></h2></p>
+    <p>
+      <div id="description">
+        <%= simple_format(@empresa.historia) %>
+      </div>
+    </p>
+  </div>
+
+  <div class="col-md-3">
+    <p>
+      <% if @empresa.promos.any?  %>
+        <div class="alert alert-info">
+          <strong>ÚLTIMAS PROMOCIONES</strong>
+        </div>
+        <%= render @empresa.promos.order(created_at: :asc).limit(2) %>
+      <% end %>
+    </p>
+  </div>
+
+</div>
+
+
+
+<% if @empresa.images.any? %>
+<p><h2 class="text-center"><b>Y porque una imagen vale más que mil palabras</b></h2></p>
+<p>
+  <div class="row">
+    <% @empresa.fotos.each do |foto| %>
+      <div class="col-md-4"><%= image_tag(foto.url, class: "img-fluid fotos gallery-items") %></div>
+    <% end %>
+  </div>
+<% end %>
+</p>
+
+<% if @empresa.video? %>
+  <p><h2 class="text-center"><b>Y porque a veces eso no es suficiente</b></h2></p>
+
+  <p class="text-center">
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe width="560" height="315" src="<%= @empresa.video %>" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </p>
+<% end %>
+
+
+
+
+<%= link_to 'Volver', root_path %>
+
+<!--  -->
 
 <%= link_to 'Edit', edit_empresa_path(@empresa) %> |
 <%= link_to 'Back', empresas_path %>

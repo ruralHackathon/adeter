@@ -15,5 +15,7 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require activestorage
+//= require imagemap
+//= require charactercount
 //= require turbolinks
 //= require_tree .

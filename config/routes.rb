@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :promos, only: [:index]
     resources :empresas, only: [:index]
   end
+
   root 'info#index'
   get 'info/index'
   get 'info/mercadillo'
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
   get 'info/naturaleza'
   get 'info/ocio'
   get 'info/mapa'
+  get '/mispromos', to: 'promos#mispromos'
 
   resources :puntos
   resources :eventos
