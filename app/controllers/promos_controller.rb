@@ -23,7 +23,7 @@ class PromosController < ApplicationController
 
   def mispromos
   plan = current_user.empresa.plan
-  last_promo = current_user.empresa.try(:promos).try(:first)
+  last_promo = current_user.empresa.try(:promos).try(:last)
 
   if plan != 'premium'
     if last_promo != nil
@@ -63,22 +63,103 @@ end
   # POST /promos
   # POST /promos.json
   def create
-
     user ||= current_user
     @promo = user.try(:empresa).try(:promos).build(promo_params)
+    set_validez
+    byebug
 
-    #@promo = Promo.new(promo_params)
+    plan = current_user.empresa.plan
+    #last_promo = current_user.empresa.try(:promos).try(:last).try(:created_at)
+    #last_promo_when = helpers.time_format_mini(last_promo) if last_promo.nil? == false
 
-    respond_to do |format|
-      if @promo.save
-        format.html { redirect_to @promo, notice: 'Promo was successfully created.' }
-        format.json { render :show, status: :created, location: @promo }
-      else
-        format.html { render :new }
-        format.json { render json: @promo.errors, status: :unprocessable_entity }
-      end
+    if (plan == 'noplan')
+      flash[:error] = "No puedas lanzar promociones. Tu plan está fuera de validez. Renuévalo."
+      redirect_to root_path
+    else
+      create_promo
     end
+
   end
+  ######################
+
+  def create_promo
+        #===========> Remember the promos are odered inversely so I take first (more recent one)
+          valid_value = false
+          last_promo = current_user.empresa.try(:promos).try(:last).try(:created_at)
+          plan = current_user.empresa.plan
+          #nil??? primera vez??
+          byebug
+            if (1==2)
+
+            else
+              if last_promo == nil #no previous publication
+                valid_value = true
+                set_validez
+              else
+                if (plan == 'premium')
+                  last_promos = current_user.empresa.try(:promos).try(:last, 3)
+                  if last_promos.count < 3
+                    valid_value = true
+                    set_validez
+                  else
+                    # It has 3 or more
+                    if is_still_valid?(last_promos[2]) # last and oldest element
+                      #All 3 options active, must wait until at least 1 finish validity
+                      flash.now[:error] = "Tienes 3 promociones en activo (Máximo). Cuando acabe una podrás poner más."
+                      render 'new' and return
+                    else
+                      # We know not all 3 options are active, so we can activate a new one
+                      valid_value = true
+                      set_validez
+                    end
+                  end
+                else
+                  #basic/plus
+                  last_promo_item = current_user.empresa.try(:promos).try(:first)
+                  if is_still_valid?(last_promo_item)
+                    flash.now[:error] = "Tu última publicación aún está activa (pásate a premium si quieres varias y sin esperas)"
+                    render 'new' and return
+                  else
+                    #Has finished the waiting period?
+                    @waiting_until = waiting_date(last_promo_item, plan)
+                    if (Time.zone.now > @waiting_until)
+                      valid_value = true
+                      set_validez
+                    else
+                      flash.now[:error] = "Aún tienes que esperar hasta la próxima promoción (pásate a premium si no quieres esperas)"
+                      render 'new' and return
+                    end
+                  end
+
+                  end
+                end
+            end
+
+      # Ya tenemos todo para saber si es válido o no
+          if valid_value == true
+              respond_to do |format|
+                if @promo.save
+
+                  format.html { redirect_to @promo, notice: 'La promoción se ha creado con éxito' }
+                  format.json { render :show, status: :created, location: @promo }
+                else
+                  format.html { render :new, alert: @promo.errors }
+                  format.json { render json: @promo.errors, status: :unprocessable_entity }
+                end
+              end
+          else
+            flash.now[:error] = "Debes seleccionar al menos una opción."
+            render 'new' and return
+          end
+
+          rescue ActiveRecord::RecordInvalid => e
+            flash[:error] = e
+            redirect_to '/promos/new'
+            #===========> Final
+      end
+
+##################################
+
 
   # PATCH/PUT /promos/1
   # PATCH/PUT /promos/1.json
@@ -108,6 +189,26 @@ end
     # Use callbacks to share common setup or constraints between actions.
     def set_promo
       @promo = Promo.find(params[:id])
+    end
+
+    def set_validez
+
+      case params[:promo][:validez]
+      when 'alta'
+        @promo.validez = Time.zone.now + 7.days
+      when 'media'
+        @promo.validez = Time.zone.now + 3.days
+      when 'baja'
+        @promo.validez = Time.zone.now + 1.day
+      end
+    end
+
+    def is_still_valid?(promo)
+      if promo.validez <= Time.zone.now
+        false
+      else
+        true
+      end
     end
 
     #returns the date to wait to in plans plus and basic given the last promo
@@ -140,6 +241,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def promo_params
-      params.require(:promo).permit(:titulo, :texto, :validez)
+      params.require(:promo).permit(:titulo, :texto, :validez, :image)
     end
 end
