@@ -44,11 +44,6 @@
   <strong>Video:</strong>
   <%= @punto.video %>
 </p>
-<p>
-  <% if @punto.image.attached? %>
-  <% end %>
-  <%= image_tag @punto.image %>
-</p>
 
-<%= link_to 'Edit', edit_admin_punto_path(@punto) %> |
-<%= link_to 'Back', admin_puntos_path %>
+<%= link_to 'Edit', edit_punto_path(@punto) %> |
+<%= link_to 'Back', puntos_path %>

@@ -4,6 +4,6 @@ class Promo < ApplicationRecord
 
   private
   def promo_params
-  params.require(:promo).permit(:titulo, :info, :fecha, :image)
+    params.require(:promo).permit(:titulo, :info, :fecha, :image)
   end
 end

@@ -69,6 +69,6 @@ class PuntosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def punto_params
-      params.require(:punto).permit(:titulo, :subtitulo, :descripcion, :lat, :lon, :horario, :precio, :info, :video)
+      params.require(:punto).permit(:titulo, :subtitulo, :descripcion, :lat, :lon, :horario, :precio, :info, :video, :image)
     end
 end

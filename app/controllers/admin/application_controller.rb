@@ -4,6 +4,7 @@ class Admin::ApplicationController < ApplicationController
     @promos = Promo.count
     @eventos = Evento.count
     @empresas = Empresa.count
+    @puntos = Punto.count
   end
 
   private

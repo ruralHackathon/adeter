@@ -21,29 +21,29 @@
       <h5>Plataforma</h5>
       <ul class="list-unstyled text-small">
 
-        <li>  <%= link_to "Publicítate", "publicitate_path", class:"text-muted" %> </li>
-        <li><a class="text-muted" href="/novedades">Novedades</a></li>
+        <li>  <%= link_to "Publicítate", "#", class:"text-muted" %> </li>
+        <li><a class="text-muted" href="#">Novedades</a></li>
         <% unless user_signed_in? %>
-        <li>  <%= link_to "Área Privada", new_user_session_path, class:"text-muted", rel: "nofollow" %> </li>
+        <li>  <%= link_to "Área Privada", new_user_sssion_path, class:"text-muted", rel: "nofollow" %> </li>
         <% end %>
       </ul>
     </div>
     <div class="col-md-3">
       <h5>Información legal</h5>
       <ul class="list-unstyled text-small">
-        <li><a class="text-muted" href="/politicadeprivacidad">Política de privacidad</a></li>
-        <li><a class="text-muted" href="/cookies">Política de Cookies</a></li>
-        <li><a class="text-muted" href="/condicionesdeuso">Condiciones de uso</a></li>
+        <li><a class="text-muted" href="#">Política de privacidad</a></li>
+        <li><a class="text-muted" href="#">Política de Cookies</a></li>
+        <li><a class="text-muted" href="#">Condiciones de uso</a></li>
 
       </ul>
     </div>
     <div class="col-md-3">
       <h5>Sobre el proyecto</h5>
       <ul class="list-unstyled text-small">
-        <li><a class="text-muted" href="/preguntasfrecuentes">Preguntas frecuentes</a></li>
-        <li><a class="text-muted" href="/quejasysugerencias">Quejas y sugerencias</a></li>
-        <li><a class="text-muted" href="/agradecimientos">Agradecimientos</a></li>
-        <li><%= link_to "Contacto","new_contact_path", class:"text-muted" %> </li>
+        <li><a class="text-muted" href="#">Preguntas frecuentes</a></li>
+        <li><a class="text-muted" href="#">Quejas y sugerencias</a></li>
+        <li><a class="text-muted" href="#">Agradecimientos</a></li>
+        <li><%= link_to "Contacto","#", class:"text-muted" %> </li>
       </ul>
     </div>
   </div>

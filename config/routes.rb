@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :eventos, only: [:index]
     resources :promos, only: [:index]
     resources :empresas, only: [:index]
+    resources :puntos, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 
   root 'info#index'
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
   get 'info/mapa'
   get '/mispromos', to: 'promos#mispromos'
 
-  resources :puntos
+  resources :puntos, only: :show
   resources :eventos
   resources :empresas
   resources :promos
