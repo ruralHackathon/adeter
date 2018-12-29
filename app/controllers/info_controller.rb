@@ -1,5 +1,8 @@
 class InfoController < ApplicationController
   def index
+    @eventos = Evento.all
+    @promos = Promo.all
+    @empresas = Empresa.all
   end
 
   def mercadillo

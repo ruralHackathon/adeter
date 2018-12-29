@@ -1,1 +1,23 @@
-ofertas
+<div class="col-md-12">
+
+  <div class="alert alert-info">
+    <strong>OFERTAS FLASH</strong>
+  </div>
+  <% if @promos.any?  %>
+    <%= render @promos %>
+  <% else %>
+    <div class="alert alert-secondary">
+      No hay promociones recientes
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-12">
+      <div class="text-right">
+        <%= link_to 'Ver todas', promos_path %>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
