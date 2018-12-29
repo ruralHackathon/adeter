@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'application#index'
     get 'application/index'
+
+    resources :users, only: [:index]
+    resources :eventos, only: [:index]
+    resources :promos, only: [:index]
+    resources :empresas, only: [:index]
   end
   root 'info#index'
   get 'info/index'

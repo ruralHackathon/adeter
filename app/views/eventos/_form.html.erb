@@ -26,7 +26,11 @@
     <%= form.datetime_select :fecha %>
   </div>
 
+  <div class="field">
+    <%= form.file_field :image %>
+  </div>
+
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Crear Evento", class:"btn btn-primary" %>
   </div>
 <% end %>

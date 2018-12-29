@@ -14,6 +14,11 @@
   <strong>Fecha:</strong>
   <%= @evento.fecha %>
 </p>
+<p>
+  <% if @evento.image.attached? %>
+    <%= image_tag @evento.image %>
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_evento_path(@evento) %> |
 <%= link_to 'Back', eventos_path %>

@@ -5,4 +5,12 @@ class Admin::ApplicationController < ApplicationController
     @eventos = Evento.count
     @empresas = Empresa.count
   end
+
+  private
+  def authorize_admin!
+    authenticate_user!
+    unless (current_user.admin?)
+      redirect_to root_path, alert: "Tú no eres administrador."
+    end
+  end
 end
